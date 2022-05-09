@@ -11,11 +11,14 @@ yargs(process.argv.slice(2))
   })
   .command({
     command: "self-introduction <name>",
-    builder: (yargs) => {
-      yargs.option('age',{
-        alias: 'a',
-        demandOption: true,
-      })
+    builder: (args) => {
+      return args
+        .option("age", {
+            alias: "a",
+            type: "number",
+            describe: "age",
+            demandOption: true,
+        })
     },
     handler: (argv) => {
       console.log(`I am ${argv.name}!! I am ${argv.age} old.`)
